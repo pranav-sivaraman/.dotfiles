@@ -10,5 +10,6 @@ set number
 set relativenumber
 
 set ts=4 sw=4
+
+filetype plugin indent on
 set autoindent
-set smartindent
