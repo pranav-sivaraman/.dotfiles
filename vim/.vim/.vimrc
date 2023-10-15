@@ -17,6 +17,11 @@ set ts=4 sw=4
 set autoindent
 set smartindent
 
+" Set Colorscheme
+set termguicolors
+set background=dark
+colorscheme rosepine
+
 " Set Color Column
 set colorcolumn=80
 highlight ColorColumn ctermbg=8

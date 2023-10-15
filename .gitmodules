@@ -1,0 +1,3 @@
+[submodule "vim/.vim/pack/plugins/start/rosepine"]
+	path = vim/.vim/pack/plugins/start/rosepine
+	url = git@github.com:rose-pine/vim.git
