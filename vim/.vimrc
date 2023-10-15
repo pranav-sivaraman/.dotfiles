@@ -15,6 +15,11 @@ set relativenumber
 " Set Indent Rules
 set ts=4 sw=4
 set autoindent
+set smartindent
+
+" Set Color Column
+set colorcolumn=80
+highlight ColorColumn ctermbg=8
 
 " Ignore Vi Mode
 set nocompatible
