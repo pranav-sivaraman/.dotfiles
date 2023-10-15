@@ -36,3 +36,9 @@ filetype plugin on
 " Fuzzy Finding 
 set path+=**
 set wildmenu
+
+" Enable Persistent Undo
+if has('persistent_undo')
+    set undodir=$HOME/.vim/undo
+    set undofile
+endif
