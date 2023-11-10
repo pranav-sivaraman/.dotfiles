@@ -12,10 +12,16 @@ nnoremap <C-f> <C-f>zz
 set number
 set relativenumber
 
-" Set Indent Rules
-set ts=4 sw=4
-set autoindent
-set smartindent
+" Set Tab Rules and Filetype Indent
+syntax enable
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" Set Tab Rules for Makefile
+autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
 " Set Colorscheme
 set termguicolors
@@ -28,16 +34,12 @@ set wrap
 set linebreak
 set columns=80
 
-" Set Color Column
+" Set Color Column (Not needed but good reference)
 set colorcolumn=80
 highlight ColorColumn ctermbg=8
 
 " Ignore Vi Mode
 set nocompatible
-
-" Enable Syntax
-syntax enable
-filetype plugin on
 
 " Fuzzy Finding 
 set path+=**
@@ -45,10 +47,11 @@ set wildmenu
 
 " Enable Persistent Undo
 if has('persistent_undo')
-	set undodir=$HOME/.vim/undo
+    set undodir=$HOME/.vim/undo
     set undofile
 endif
 
+" Remote SSH Copy
 function! OscCopy()
   let encodedText=@"
   let encodedText=substitute(encodedText, '\', '\\\\', "g")
