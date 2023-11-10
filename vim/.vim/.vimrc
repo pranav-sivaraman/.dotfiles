@@ -22,6 +22,12 @@ set termguicolors
 set background=dark
 colorscheme rosepine
 
+" Set Scroll and Line Break Options
+set scrolloff=999
+set wrap
+set linebreak
+set columns=80
+
 " Set Color Column
 set colorcolumn=80
 highlight ColorColumn ctermbg=8
@@ -39,7 +45,7 @@ set wildmenu
 
 " Enable Persistent Undo
 if has('persistent_undo')
-    set undodir=$HOME/.vim/undo
+	set undodir=$HOME/.vim/undo
     set undofile
 endif
 
