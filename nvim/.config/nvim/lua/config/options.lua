@@ -23,6 +23,9 @@ opt.signcolumn = "yes"
 opt.ignorecase = true
 opt.smartcase = true
 
+-- Enable Persistent Undo
+opt.undofile = true
+
 -- Cursor Line
 opt.cursorline = true
 
