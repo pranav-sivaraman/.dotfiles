@@ -18,6 +18,7 @@ return {
                 "cmake",
                 "yamlls",
                 "texlab",
+                "rust_analyzer",
             },
 
             automatic_installation = true

@@ -21,6 +21,7 @@ return {
                 "make",
                 "bash",
                 "python",
+                "rust",
             },
             sync_install = false,
             highlight = { enable = true },
