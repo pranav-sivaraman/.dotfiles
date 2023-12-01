@@ -4,6 +4,9 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
 
+-- Do not show mode information
+opt.showmode = false
+
 -- Set Tab Rules
 opt.tabstop = 4
 opt.shiftwidth = 4
