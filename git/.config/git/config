@@ -1,5 +1,12 @@
 [user]
 	name = Pranav Sivaraman
-	email = 14294205+pranav-sivaraman@users.noreply.github.com
+	email = pranavsivaraman@gmail.com
 [core]
-	editor = nvim
+	editor = vim
+  fsmonitor = true
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[alias]
+  pushf = push --force-with-lease --force-if-includes
