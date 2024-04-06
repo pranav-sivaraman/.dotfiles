@@ -11,9 +11,9 @@ autocmd("TextYankPost", {
 })
 
 autocmd("BufReadPost", {
-    desc = "Keep File Cursor",
-    group = augroup("UserGroup", {}),
-    callback = function(args)
+  desc = "Keep File Cursor",
+  group = augroup("UserGroup", {}),
+  callback = function(args)
     local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line('$')
     local not_commit = vim.b[args.buf].filetype ~= 'commit'
 
@@ -22,4 +22,3 @@ autocmd("BufReadPost", {
     end
   end,
 })
-
