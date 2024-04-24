@@ -1,10 +1,3 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="robbyrussell"
-plugins=(git history)
-source $ZSH/oh-my-zsh.sh
-
 # CMake Settings
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 export CMAKE_GENERATOR=Ninja
@@ -17,10 +10,6 @@ export EDITOR=nvim
 
 # Setup XDG Config
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# Setup Terminal Plugins
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(fzf --zsh)"
 
 # Setup Bat Theme
 export BAT_THEME="rose-pine"
@@ -53,3 +42,13 @@ export CC=clang
 export CXX=clang++
 
 export PATH=$PATH:/Users/pranav/.spicetify
+
+if [ ! -d "$HOME/.zsh" ]; then
+    mkdir -p "$HOME/.zsh"
+    git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git "$HOME/.zsh/space"
+fi
+source "$HOME/.zsh/spaceship/spaceship.zsh"
+
+# Setup Terminal Plugins
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
