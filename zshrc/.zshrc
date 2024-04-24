@@ -45,7 +45,7 @@ export PATH=$PATH:/Users/pranav/.spicetify
 
 if [ ! -d "$HOME/.zsh" ]; then
     mkdir -p "$HOME/.zsh"
-    git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git "$HOME/.zsh/space"
+    git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git "$HOME/.zsh/spaceship"
 fi
 source "$HOME/.zsh/spaceship/spaceship.zsh"
 
