@@ -22,26 +22,9 @@ alias cat="bat --style=plain"
 alias ldd="otool -L"
 alias sview="spacktivate $SPACK_ENV -v"
 
-# Setup Spack and Ramble
-export SPACK_SKIP_MODULES="true"
-source /Users/pranav/Documents/Research/performance_portability/spack/share/spack/setup-env.sh
-source /Users/pranav/Documents/Research/performance_portability/ramble/share/ramble/setup-env.sh
-
-# Homebrew Setup
-export PATH="/opt/homebrew/opt/ccache/libexec:/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/share/opt-viewer:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin/:$PATH"
-export LD_LIBRARY_PATH="/opt/homebrew/lib:/opt/homebrew/llvm/lib:$LD_LIBRARY_PATH"
-
-# C++ Env Var Setup
-export CPATH="/opt/homebrew/opt/llvm/include:/opt/homebrew/include:$CPATH"
-export LIBRARY_PATH="/opt/homebrew/opt/llvm/lib:/opt/homebrew/lib:$LIBRARY_PATH"
-
-export CC=clang
-export CXX=clang++
-
-export PATH=$PATH:/Users/pranav/.spicetify
+# Setup Spack
+. ~/spack/share/spack/setup-env.sh
+export PATH="$PATH:$(spack location -e dev)/.spack-env/view/bin"
 
 if [ ! -d "$HOME/.zsh" ]; then
     mkdir -p "$HOME/.zsh"
