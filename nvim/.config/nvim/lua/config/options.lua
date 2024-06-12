@@ -14,7 +14,7 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- Popup Options
-opt.pumblend = 10  -- Popup blend
+opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 
 -- Set Colorscheme Options
