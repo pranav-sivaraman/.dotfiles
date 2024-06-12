@@ -3,13 +3,15 @@ return {
 	lazy = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable("make") == 1, build = "make" },
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	cmd = "Telescope",
 	config = function()
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		local actions = require("telescope.actions")
+
+		telescope.load_extension("fzf")
 
 		telescope.setup({
 
@@ -36,10 +38,11 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
-		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
-		vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find Word in File" })
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
+		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
+		vim.keymap.set("n", "<leader>fr", builtin.find_files, { desc = "Find files" })
+		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Find old files" })
+		vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find word in file" })
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help tags" })
 	end,
 }
