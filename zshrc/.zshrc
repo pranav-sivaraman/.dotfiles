@@ -28,6 +28,10 @@ fi
 # Setup Spack
 source "$HOME/spack/share/spack/setup-env.sh"
 
+# Dev Tools
+spack load neovim zoxide fzf ripgrep fd eza lazygit stow npm python@3.11
+EDITOR=nvim
+
 # Add in Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
