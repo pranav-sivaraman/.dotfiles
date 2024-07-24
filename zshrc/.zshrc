@@ -29,8 +29,9 @@ fi
 source "$HOME/spack/share/spack/setup-env.sh"
 
 # Dev Tools
-spack load neovim zoxide fzf ripgrep fd eza lazygit stow npm python@3.11
-EDITOR=nvim
+#spack load neovim zoxide fzf ripgrep fd eza lazygit stow npm python@3.11 bat cmake ninja/kr mold ccache
+export PATH="$PATH:$(spack location -e dev)/.spack-env/view/bin"
+export EDITOR=nvim
 
 # Add in Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
@@ -60,17 +61,16 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Setup Aliases
-alias vim=nvim
-alias lg="lazygit"
-alias ls="eza --color=always --long --grid --git --no-filesize \
-          --icons=always --no-time --no-user --no-permissions"
-alias cat="bat --style=plain"
-alias ldd="otool -L"
+type "nvim" &>/dev/null && alias vim="nvim"
+type "lazygit" &>/dev/null && alias lg="lazygit"
+type "eza" &>/dev/null && alias ls="eza --color=always --icons=always"
+type "bat" &>/dev/null && alias cat="bat --style=plain"
+[ "$(uname)" = "Darwin" ] && alias ldd="otool -L"
 alias sview="spacktivate $SPACK_ENV -v"
 
 # Setup Shell Integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+type "fzf" &>/dev/null && eval "$(fzf --zsh)"
+type "zoxide" &>/dev/null && eval "$(zoxide init --cmd cd zsh)"
  
 # Completion styling
 zstyle ':completion:*' menu no
@@ -78,8 +78,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
  
 # CMake Settings
-CMAKE_EXPORT_COMPILE_COMMANDS=ON
-CMAKE_GENERATOR=Ninja
+export CMAKE_EXPORT_COMPILE_COMMANDS=ON
+export CMAKE_GENERATOR=Ninja
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
