@@ -32,7 +32,7 @@ colorscheme rosepine
 set scrolloff=999
 set wrap
 set linebreak
-set columns=80
+set columns=120
 
 " Set Color Column (Not needed but good reference)
 set colorcolumn=80
