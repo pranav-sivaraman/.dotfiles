@@ -8,6 +8,11 @@ fi
 # Setup XDG Config
 XDG_CONFIG_HOME="$HOME/.config"
 
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export HOMEBREW_NO_AUTO_UPDATE=1
+fi
+
 # Setup zinit home
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
  
@@ -27,11 +32,6 @@ fi
 
 # Setup Spack
 source "$HOME/spack/share/spack/setup-env.sh"
-
-# Dev Tools
-#spack load neovim zoxide fzf ripgrep fd eza lazygit stow npm python@3.11 bat cmake ninja/kr mold ccache
-export PATH="$PATH:$(spack location -e dev)/.spack-env/view/bin"
-export EDITOR=nvim
 
 # Add in Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
@@ -61,10 +61,12 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Setup Aliases
+alias rm="rm -i"
 type "nvim" &>/dev/null && alias vim="nvim"
 type "lazygit" &>/dev/null && alias lg="lazygit"
 type "eza" &>/dev/null && alias ls="eza --color=always --icons=always"
 type "bat" &>/dev/null && alias cat="bat --style=plain"
+type "just" &>/dev/null && alias j="just"
 [ "$(uname)" = "Darwin" ] && alias ldd="otool -L"
 alias sview="spacktivate $SPACK_ENV -v"
 
