@@ -4,6 +4,7 @@
 [core]
 	editor = vim
   fsmonitor = true
+	excludesfile = ~/.config/git/ignore
 [rerere]
 	enabled = true
 [column]
