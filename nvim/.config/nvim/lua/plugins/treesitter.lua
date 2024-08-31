@@ -25,6 +25,7 @@ return {
 				"yaml",
 				"markdown",
 				"markdown_inline",
+				"just",
 			},
 			sync_install = false,
 			highlight = { enable = true },

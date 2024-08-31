@@ -15,8 +15,7 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"clangd",
-				"black",
-				"isort",
+        "ruff",
 				"prettier",
 				"stylua",
 				"lua_ls",
