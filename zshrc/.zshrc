@@ -1,87 +1,94 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# XDG_CONFIG
+XDG_CONFIG_HOME="$HOME/.config"
+
+function zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
+}
+
+# Clone and compile to wordcode missing plugins.
+if [[ ! -e ~/zsh-syntax-highlighting ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+  zcompile-many ~/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
+fi
+if [[ ! -e ~/zsh-autosuggestions ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~/zsh-autosuggestions
+  zcompile-many ~/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
+fi
+if [[ ! -e ~/powerlevel10k ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+  make -C ~/powerlevel10k pkg
+fi
+
+# Activate Powerlevel10k Instant Prompt.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Setup XDG Config
-XDG_CONFIG_HOME="$HOME/.config"
-
-if [ -f "/opt/homebrew/bin/brew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  export HOMEBREW_NO_AUTO_UPDATE=1
-fi
-
-# Setup zinit home
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
- 
-# Download Zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Download Spack, if it's not there yet
-if [ ! -d "$HOME/spack" ]; then
-  git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-fi
-
-# Setup Spack
-source "$HOME/spack/share/spack/setup-env.sh"
-
-# Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
-
-# Load completions
+# Enable the "new" completion system (compsys).
 autoload -Uz compinit && compinit
-zinit cdreplay -q
+[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile-many ~/.zcompdump
+unfunction zcompile-many
 
-# History Env Vars
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Load plugins.
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.p10k.zsh
+
+# Homebrew
+if [ -d "/opt/homebrew" ]; then
+  export HOMEBREW_PREFIX="/opt/homebrew"
+  export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
+  export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/homebrew"
+  export HOMEBREW_NO_AUTO_UPDATE="1"
+fi
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
+export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
+
+# Spack
+if [ ! -d "$HOME/spack" ]; then
+  git clone -c feature.manyFiles=true git@github.com:spack/spack.git
+  (cd $HOME/spack && git maintenance start)
+fi
+. "$HOME/spack/share/spack/setup-env.sh"
+
+# CMake
+export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
+export CMAKE_GENERATOR="Ninja"
+
+# Aliases
+[ -x "$(command -v nvim)" ] && alias vim="nvim"
+[ -x "$(command -v bat)" ] && alias cat="bat --color=always"
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=5000000
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
 
-# History Options
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt SHARE_HISTORY
 
-# Setup Aliases
-alias rm="rm -i"
-type "nvim" &>/dev/null && alias vim="nvim"
-type "lazygit" &>/dev/null && alias lg="lazygit"
-type "eza" &>/dev/null && alias ls="eza --color=always --icons=always"
-type "bat" &>/dev/null && alias cat="bat --style=plain"
-type "just" &>/dev/null && alias j="just"
-[ "$(uname)" = "Darwin" ] && alias ldd="otool -L"
-alias sview="spacktivate $SPACK_ENV -v"
+# Fzf
+export FZF_DEFAULT_OPTS="
+  --height=10% --layout=reverse --info=hidden --wrap
+  --pointer '' --marker '' --prompt ''"
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target,__pycache__
+  --preview 'cat -n {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
 
-# Setup Shell Integrations
-type "fzf" &>/dev/null && eval "$(fzf --zsh)"
-type "zoxide" &>/dev/null && eval "$(zoxide init --cmd cd zsh)"
- 
-# Completion styling
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
- 
-# CMake Settings
-export CMAKE_EXPORT_COMPILE_COMMANDS=ON
-export CMAKE_GENERATOR=Ninja
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Shell integrations
+[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
+[ -x "$(command -v zoxide)" ] && eval "$(zoxide init --cmd cd zsh)"
