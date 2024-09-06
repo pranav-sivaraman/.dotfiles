@@ -11,6 +11,9 @@ opt.cursorline = true
 
 -- Tab rules
 -- TODO: Set default indent rules based on filetype
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.autoindent = true
 opt.expandtab = true
 
 -- Colorscheme
