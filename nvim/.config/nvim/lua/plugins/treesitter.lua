@@ -1,0 +1,47 @@
+return {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	event = { "VeryLazy" },
+	lazy = vim.fn.argc(-1) == 0,
+	init = function(plugin)
+		require("lazy.core.loader").add_to_rtp(plugin)
+	end,
+	opts_extend = { "ensure_installed" },
+	opts = {
+		highlight = { enable = true },
+		ensure_installed = {
+			"asm",
+			"bash",
+			"c",
+			"comment",
+			"cmake",
+			"cpp",
+			"cuda",
+			"dockerfile",
+			"doxygen",
+			"fish",
+			"fortran",
+			"git_config",
+			"git_rebase",
+			"gitattributes",
+			"gitcommit",
+			"gitignore",
+			"latex",
+			"llvm",
+			"lua",
+			"make",
+			"mlir",
+			"ninja",
+			"nix",
+			"python",
+			"rust",
+			"tmux",
+			"toml",
+			"vim",
+			"yaml",
+		},
+	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
+}
