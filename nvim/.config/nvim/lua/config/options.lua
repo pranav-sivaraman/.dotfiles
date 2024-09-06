@@ -7,8 +7,10 @@ opt.relativenumber = true
 -- Status information
 opt.showmode = false
 opt.showcmd = false
+opt.cursorline = true
 
 -- Tab rules
+-- TODO: Set default indent rules based on filetype
 opt.expandtab = true
 
 -- Colorscheme
@@ -20,6 +22,11 @@ opt.signcolumn = "yes"
 opt.scrolloff = 999
 opt.wrap = true
 opt.linebreak = true
+
+
+-- Split windows
+opt.splitright = true
+opt.splitbelow = true
 
 -- Persistent undo
 opt.undofile = true
