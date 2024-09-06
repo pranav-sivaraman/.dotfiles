@@ -63,6 +63,7 @@ export CMAKE_GENERATOR="Ninja"
 # Aliases
 [ -x "$(command -v nvim)" ] && alias vim="nvim"
 [ -x "$(command -v bat)" ] && alias cat="bat --color=always"
+[ -x "$(command -v lazygit)" ] && alias lg="lazygit"
 
 # History
 HISTFILE="$HOME/.zsh_history"
