@@ -8,14 +8,10 @@ if [ -d "/opt/homebrew" ]; then
   export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/homebrew"
   export HOMEBREW_NO_AUTO_UPDATE="1"
 fi
+
 export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
 export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
 export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
-
-# If not in tmux, start tmux.
-if [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
-  exec tmux new -s home
-fi
 
 export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
