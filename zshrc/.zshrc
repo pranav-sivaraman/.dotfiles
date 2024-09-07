@@ -17,25 +17,29 @@ if [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
   exec tmux new -s home
 fi
 
+export ZSH_PREFIX="$HOME/.zsh"
+export ZSH_PLUGINS="$HOME/.zsh/plugins"
+export ZSH_COMPLETIONS="$HOME/.zsh/completions"
+
 function zcompile-many() {
   local f
   for f; do zcompile -R -- "$f".zwc "$f"; done
 }
 
 # Clone and compile to wordcode missing plugins.
-if [[ ! -e ~/zsh-syntax-highlighting ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
-  zcompile-many ~/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
+if [[ ! -e "$ZSH_PLUGINS/zsh-syntax-highlighting" ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting
+  zcompile-many $ZSH_PLUGINS/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
 fi
 
-if [[ ! -e ~/zsh-autosuggestions ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~/zsh-autosuggestions
-  zcompile-many ~/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
+if [[ ! -e "$ZSH_PLUGINS/zsh-autosuggestions" ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_PLUGINS/zsh-autosuggestions
+  zcompile-many $ZSH_PLUGINS/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
 fi
 
-if [[ ! -e ~/powerlevel10k ]]; then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-  make -C ~/powerlevel10k pkg
+if [[ ! -e "$ZSH_PLUGINS/powerlevel10k" ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_PLUGINS/powerlevel10k"
+  make -C $ZSH_PLUGINS/powerlevel10k pkg
 fi
 
 # Activate Powerlevel10k Instant Prompt.
@@ -45,23 +49,23 @@ fi
 
 # Enable the "new" completion system (compsys).
 autoload -Uz compinit && compinit
-[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile-many ~/.zcompdump
+[[ "$HOME/.zcompdump.zwc" -nt "$HOME/.zcompdump" ]] || zcompile-many "$HOME/.zcompdump"
 unfunction zcompile-many
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # Load plugins.
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.p10k.zsh
+source "$ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZSH_PLUGINS/powerlevel10k/powerlevel10k.zsh-theme"
+source "$HOME/.p10k.zsh"
 
 # Spack
 if [ ! -d "$HOME/spack" ]; then
   git clone -c feature.manyFiles=true git@github.com:spack/spack.git
   (cd $HOME/spack && git maintenance start)
 fi
-. "$HOME/spack/share/spack/setup-env.sh"
+source "$HOME/spack/share/spack/setup-env.sh"
 
 # CMake
 export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
