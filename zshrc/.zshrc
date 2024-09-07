@@ -70,6 +70,8 @@ source "$HOME/spack/share/spack/setup-env.sh"
 # CMake
 export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
 export CMAKE_GENERATOR="Ninja"
+[ -x "$(command -v ccache)" ] && CMAKE_C_COMPILER_LAUNCHER="ccache"
+[ -x "$(command -v ccache)" ] && CMAKE_CXX_COMPILER_LAUNCHER="ccache"
 
 # Aliases
 [ -x "$(command -v nvim)" ] && alias vim="nvim"
