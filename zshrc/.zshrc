@@ -37,6 +37,11 @@ if [[ ! -e "$ZSH_PLUGINS/zsh-autosuggestions" ]]; then
   zcompile-many $ZSH_PLUGINS/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
 fi
 
+if [[ ! -e "$ZSH_PLUGINS/fzf-tab" ]]; then
+  git clone --depth=1 https://github.com/Aloxaf/fzf-tab "$ZSH_PLUGINS/fzf-tab"
+  zcompile-many $ZSH_PLUGINS/fzf-tab/{fzf-tab.zsh,/**/*.zsh}
+fi
+
 if [[ ! -e "$ZSH_PLUGINS/powerlevel10k" ]]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_PLUGINS/powerlevel10k"
   make -C $ZSH_PLUGINS/powerlevel10k pkg
@@ -55,6 +60,7 @@ unfunction zcompile-many
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # Load plugins.
+source "$ZSH_PLUGINS/fzf-tab/fzf-tab.plugin.zsh"
 source "$ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZSH_PLUGINS/powerlevel10k/powerlevel10k.zsh-theme"
