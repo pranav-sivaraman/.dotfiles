@@ -14,7 +14,7 @@ export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 
 # If not in tmux, start tmux.
 if [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
-  exec tmux -t home
+  exec tmux new -s home
 fi
 
 function zcompile-many() {
