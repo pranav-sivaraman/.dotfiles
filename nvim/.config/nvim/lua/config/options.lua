@@ -9,6 +9,10 @@ opt.showmode = false
 opt.showcmd = false
 opt.cursorline = true
 
+-- Popup options
+opt.pumblend = 10
+opt.pumheight = 10
+
 -- Tab rules
 -- TODO: Set default indent rules based on filetype
 opt.tabstop = 2
@@ -25,7 +29,6 @@ opt.signcolumn = "yes"
 opt.scrolloff = 999
 opt.wrap = true
 opt.linebreak = true
-
 
 -- Split windows
 opt.splitright = true

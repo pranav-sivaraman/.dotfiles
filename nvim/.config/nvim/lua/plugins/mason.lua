@@ -8,6 +8,7 @@ return {
 		ensure_installed = {
 			"stylua",
 			"clangd",
+			"cmake-language-server",
 		},
 	},
 	config = function(_, opts)

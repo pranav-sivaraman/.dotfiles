@@ -1,7 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	event = { "VeryLazy" },
+	event = { "LazyFile", "VeryLazy" },
 	lazy = vim.fn.argc(-1) == 0,
 	init = function(plugin)
 		require("lazy.core.loader").add_to_rtp(plugin)
