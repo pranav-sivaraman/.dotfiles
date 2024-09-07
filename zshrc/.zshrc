@@ -17,6 +17,10 @@ export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
 export ZSH_COMPLETIONS="$HOME/.zsh/completions"
 
+if [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
+  tmux -u new -A -D -t home
+fi
+
 function zcompile-many() {
   local f
   for f; do zcompile -R -- "$f".zwc "$f"; done
