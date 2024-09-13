@@ -42,3 +42,6 @@ opt.colorcolumn = "80"
 
 -- No swap file
 opt.swapfile = false
+
+-- Clipboard
+opt.clipboard:append("unnamedplus")

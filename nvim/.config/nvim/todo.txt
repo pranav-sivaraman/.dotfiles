@@ -1,0 +1,19 @@
+Formatting and Linting
+- need to add cmakelang format
+- need to figure out cmakelang's linting capabiltiies?
+
+FZF
+- Files
+- Recents
+- Ripgrep
+
+Keymaps
+-- To Add
+- inlay hints
+- code lens
+- lsp actions
+- gitsigns (staging lines and hunks)
+- OSC Copy
+
+-- To Relearn?
+-- window management

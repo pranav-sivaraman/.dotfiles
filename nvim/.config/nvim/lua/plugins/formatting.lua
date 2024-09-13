@@ -1,25 +1,21 @@
 return {
 	"stevearc/conform.nvim",
-	dependencies = { "mason.nvim" },
-  event = { "LazyFile", "VeryLazy"},
+	event = "BufEnter",
 	cmd = "ConformInfo",
 	opts = {
-		default_format_opts = {
-			timeout_ms = 3000,
-			async = false,
-			quiet = false,
-			lsp_format = "fallback",
-		},
-		formatters_by_ft = {
-			lua = { "stylua" },
-			fish = { "fish_indent" },
-		},
+		default_format_opts = { lsp_format = "fallback" },
 		format_on_save = {
 			lsp_format = "fallback",
 			timeout_ms = 500,
 		},
+		format_after_save = {
+			lsp_format = "fallback",
+		},
+		formatters_by_ft = {
+			sh = { "shfmt" },
+			lua = { "stylua" },
+			python = { "ruff" },
+			cmake = { "cmakelang" },
+		},
 	},
-	config = function(_, opts)
-		require("conform").setup(opts)
-	end,
 }

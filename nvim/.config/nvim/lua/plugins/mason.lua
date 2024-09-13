@@ -1,27 +1,26 @@
 return {
 	"williamboman/mason.nvim",
+	event = "BufEnter",
 	cmd = "Mason",
-	keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-	build = ":MasonUpdate",
-	opts_extend = { "ensure_installed" },
 	opts = {
+		max_concurrent_installers = 8,
 		ensure_installed = {
-			"stylua",
+			"bash-language-server",
 			"clangd",
-			"cmake-language-server",
+			"cmakelang",
+			"lua-language-server",
+			"ruff",
+			"shfmt",
+			"stylua",
 		},
 	},
 	config = function(_, opts)
 		require("mason").setup(opts)
-		local mr = require("mason-registry")
-
-		mr.refresh(function()
-			for _, tool in ipairs(opts.ensure_installed) do
-				local p = mr.get_package(tool)
-				if not p:is_installed() then
-					p:install()
-				end
+		local registry = require("mason-registry")
+		for _, tool in ipairs(opts.ensure_installed) do
+			if not registry.is_installed(tool) then
+				vim.cmd("MasonInstall " .. tool)
 			end
-		end)
+		end
 	end,
 }
