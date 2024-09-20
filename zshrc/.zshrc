@@ -4,6 +4,7 @@ XDG_CONFIG_HOME="$HOME/.config"
 # Homebrew
 if [ -d "/opt/homebrew" ]; then
   export HOMEBREW_PREFIX="/opt/homebrew"
+  export HOMEBREW_OPT_PREFIX="/opt/homebrew/opt"
   export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
   export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/homebrew"
   export HOMEBREW_NO_AUTO_UPDATE="1"
