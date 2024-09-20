@@ -21,6 +21,6 @@ config.freetype_render_target = "HorizontalLcd"
 
 config.audible_bell = "Disabled"
 
-config.native_macos_fullscreen_mode = true
+config.window_decorations = "RESIZE"
 
 return config
