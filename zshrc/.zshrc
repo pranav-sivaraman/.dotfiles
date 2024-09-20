@@ -8,11 +8,35 @@ if [ -d "/opt/homebrew" ]; then
   export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
   export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/homebrew"
   export HOMEBREW_NO_AUTO_UPDATE="1"
+
+  path=(
+    "$HOMEBREW_OPT_PREFIX/python@3.12/libexec/bin"
+    "$HOMEBREW_OPT_PREFIX/make/libexec/gnubin"
+    "$HOMEBREW_OPT_PREFIX/llvm/bin"
+    "$HOMEBREW_OPT_PREFIX/postgresql@16/bin"
+    "$HOMEBREW_PREFIX/bin"
+    "$HOMEBREW_PREFIX/sbin"
+    $path
+  )
+  
+  manpath=(
+    "$HOMEBREW_PREFIX/share/man"
+    $manpath
+  )
+  
+  infopath=(
+    "$HOMEBREW_PREFIX/share/info"
+    $infopath
+  )
 fi
 
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
-export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
-export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
+# Texbin
+if [ -d "/Library/TeX/texbin" ]; then
+  path=(
+    "/Library/TeX/texbin"
+    $path
+  )
+fi
 
 export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
