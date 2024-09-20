@@ -30,13 +30,9 @@ if [ -d "/opt/homebrew" ]; then
   )
 fi
 
-# Texbin
-if [ -d "/Library/TeX/texbin" ]; then
-  path=(
-    "/Library/TeX/texbin"
-    $path
-  )
-fi
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
+export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
 
 export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
@@ -107,8 +103,10 @@ export CMAKE_GENERATOR="Ninja"
 # Aliases
 [ -x "$(command -v nvim)" ] && alias vim="nvim"
 [ -x "$(command -v bat)" ] && alias cat="bat --color=always"
-[ -x "$(command -v lazygit)" ] && alias lg="lazygit"
-[ -x "$(command -v eza)" ] && alias ls="eza"
+[ -x "$(command -v eza)" ] && alias ls="eza --icons=always"
+
+# Editor
+export EDITOR=$(whence vim)
 
 # History
 HISTFILE="$HOME/.zsh_history"
