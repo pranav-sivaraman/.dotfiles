@@ -30,10 +30,15 @@ if [ -d "/opt/homebrew" ]; then
   )
 fi
 
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
-export MANPATH="$MANPATH:$HOMEBREW_PREFIX/share/man"
-export INFOPATH="$INFOPATH:$HOMEBREW_PREFIX/share/info"
+# Texbin
+if [ -d "/Library/TeX/texbin" ]; then
+  path=(
+    "/Library/TeX/texbin"
+    $path
+  )
+fi
 
+# zsh setup
 export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
 export ZSH_COMPLETIONS="$HOME/.zsh/completions"
