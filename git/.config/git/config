@@ -2,7 +2,6 @@
 	name = Pranav Sivaraman
 	email = pranavsivaraman@gmail.com
 [core]
-	editor = vim
   fsmonitor = true
 	excludesfile = ~/.config/git/ignore
 [rerere]
@@ -11,3 +10,5 @@
 	ui = auto
 [alias]
   pushf = push --force-with-lease --force-if-includes
+[feature]
+	manyFiles = true
