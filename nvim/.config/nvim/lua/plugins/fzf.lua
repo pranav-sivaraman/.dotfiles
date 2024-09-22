@@ -7,7 +7,11 @@ return {
 			{
 				"<leader>ff",
 				function()
-					fzf.files()
+					local cwd_basename = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+					fzf.files({
+						prompt = string.format("%s/", cwd_basename),
+						cwd_prompt = false,
+					})
 				end,
 				desc = "Find files",
 			},
