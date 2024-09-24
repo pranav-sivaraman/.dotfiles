@@ -95,7 +95,7 @@ source "$HOME/.p10k.zsh"
 
 # Spack
 if [ ! -d "$HOME/spack" ]; then
-  git clone -c feature.manyFiles=true git@github.com:spack/spack.git
+  git clone -c feature.manyFiles=true git@github.com:spack/spack.git "$HOME/spack"
   (cd $HOME/spack && git maintenance start)
 fi
 source "$HOME/spack/share/spack/setup-env.sh"
