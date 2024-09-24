@@ -43,5 +43,8 @@ opt.colorcolumn = "80"
 -- No swap file
 opt.swapfile = false
 
+-- Conceal level
+opt.conceallevel = 1
+
 -- Clipboard
 opt.clipboard:append("unnamedplus")
