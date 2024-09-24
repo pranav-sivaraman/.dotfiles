@@ -3,24 +3,12 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local servers = { "clangd", "ruff", "lua_ls" }
 
-		-- require("mason-lspconfig").setup_handlers({
-		-- 	function(server_name)
-		-- 		lspconfig[server_name].setup({
-		-- 			capabilities = capabilities,
-		-- 		})
-		-- 	end,
-		--
-		-- 	["lua_ls"] = function()
-		-- 		lspconfig.lua_ls.setup({
-		-- 			settings = {
-		-- 				Lua = {
-		-- 					diagnostics = { globals = { "vim" } },
-		-- 					hint = { enable = true },
-		-- 				},
-		-- 			},
-		-- 		})
-		-- 	end,
-		})
+		for _, server in ipairs(servers) do
+			lspconfig[server].setup({
+				capabilities = capabilities,
+			})
+		end
 	end,
 }
