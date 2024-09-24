@@ -11,6 +11,7 @@ if [ -d "/opt/homebrew" ]; then
 
   path=(
     "$HOMEBREW_OPT_PREFIX/python@3.12/libexec/bin"
+    "$HOMEBREW_OPT_PREFIX/coreutils/libexec/gnubin"
     "$HOMEBREW_OPT_PREFIX/make/libexec/gnubin"
     "$HOMEBREW_OPT_PREFIX/llvm/bin"
     "$HOMEBREW_OPT_PREFIX/postgresql@16/bin"
