@@ -1,0 +1,12 @@
+tap "homebrew/bundle"
+brew "ccache"
+brew "cmake"
+brew "eza"
+brew "fzf"
+brew "gcc"
+brew "python@3.12"
+brew "llvm"
+brew "neovim"
+brew "ninja"
+brew "tmux", args: ["HEAD"]
+brew "zoxide"
