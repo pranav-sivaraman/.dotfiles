@@ -109,7 +109,13 @@ export CMAKE_GENERATOR="Ninja"
 # Aliases
 [ -x "$(command -v nvim)" ] && alias vim="nvim"
 [ -x "$(command -v bat)" ] && alias cat="bat --color=always"
-[ -x "$(command -v eza)" ] && alias ls="eza --icons=always"
+if [ -x "$(command -v eza)" ]; then
+    alias ls="eza --icons=always"
+    alias ll="eza --icons=always -l"
+else
+    alias ls="ls --color"
+    alias ll="ls --color -l"
+fi
 
 # Editor
 export EDITOR=$(whence vim)
