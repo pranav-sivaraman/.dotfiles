@@ -116,6 +116,7 @@ else
     alias ls="ls --color"
     alias ll="ls --color -l"
 fi
+alias rm="rm -i"
 
 # Editor
 export EDITOR=$(whence vim)
