@@ -39,6 +39,21 @@ if [ -d "/Library/TeX/texbin" ]; then
   )
 fi
 
+# Cargo
+if [ -d "$HOME/.cargo" ]; then
+  path=(
+    "$HOME/.cargo/bin"
+    $path
+  )
+fi
+
+# Go
+export GOPATH = "$HOME/.go"
+path=(
+  "$HOME/.go/bin"
+  $path
+)
+
 # zsh setup
 export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
