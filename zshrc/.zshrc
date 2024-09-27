@@ -48,7 +48,7 @@ if [ -d "$HOME/.cargo" ]; then
 fi
 
 # Go
-export GOPATH = "$HOME/.go"
+export GOPATH="$HOME/.go"
 path=(
   "$HOME/.go/bin"
   $path
