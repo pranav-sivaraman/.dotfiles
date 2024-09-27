@@ -59,7 +59,7 @@ export ZSH_PREFIX="$HOME/.zsh"
 export ZSH_PLUGINS="$HOME/.zsh/plugins"
 export ZSH_COMPLETIONS="$HOME/.zsh/completions"
 
-if [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
+if [[ -x "$(command -v tmux)" ]] && [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
   tmux -u new -A -D -t home
 fi
 
