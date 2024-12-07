@@ -14,8 +14,7 @@ return {
 		formatters_by_ft = {
 			sh = { "shfmt" },
 			lua = { "stylua" },
-			python = { "ruff" },
-			cmake = { "cmakelang" },
+			python = { "ruff_format" },
 		},
 	},
 }
