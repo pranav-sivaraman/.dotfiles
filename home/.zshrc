@@ -10,11 +10,9 @@ if [ -d "/opt/homebrew" ]; then
   export HOMEBREW_NO_AUTO_UPDATE="1"
 
   path=(
-    "$HOMEBREW_OPT_PREFIX/python@3.12/libexec/bin"
     "$HOMEBREW_OPT_PREFIX/coreutils/libexec/gnubin"
     "$HOMEBREW_OPT_PREFIX/make/libexec/gnubin"
     "$HOMEBREW_OPT_PREFIX/llvm/bin"
-    "$HOMEBREW_OPT_PREFIX/postgresql@16/bin"
     "$HOMEBREW_PREFIX/bin"
     "$HOMEBREW_PREFIX/sbin"
     $path
@@ -120,6 +118,8 @@ export CMAKE_EXPORT_COMPILE_COMMANDS="ON"
 export CMAKE_GENERATOR="Ninja"
 [ -x "$(command -v ccache)" ] && CMAKE_C_COMPILER_LAUNCHER="ccache"
 [ -x "$(command -v ccache)" ] && CMAKE_CXX_COMPILER_LAUNCHER="ccache"
+[ -x "$(command -v sccache)" ] && CMAKE_C_COMPILER_LAUNCHER="sccache"
+[ -x "$(command -v sccache)" ] && CMAKE_CXX_COMPILER_LAUNCHER="sccache"
 
 # Aliases
 [ -x "$(command -v nvim)" ] && alias vim="nvim"
@@ -164,3 +164,4 @@ export FZF_CTRL_R_OPTS="
 # Shell integrations
 [ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init --cmd cd zsh)"
+export PATH="$PATH:/Users/psivaram/.modular/bin"

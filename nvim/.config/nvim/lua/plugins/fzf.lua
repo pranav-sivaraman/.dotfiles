@@ -11,6 +11,7 @@ return {
 					fzf.files({
 						prompt = string.format("%s/", cwd_basename),
 						cwd_prompt = false,
+						silent = true,
 					})
 				end,
 				desc = "Find files",
@@ -41,5 +42,6 @@ return {
 				["jk"] = "hide",
 			},
 		},
+		silent = true,
 	},
 }

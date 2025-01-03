@@ -15,6 +15,8 @@ return {
 			sh = { "shfmt" },
 			lua = { "stylua" },
 			python = { "ruff_format" },
+			html = { "prettier" },
+			fish = { "fish_indent" },
 		},
 	},
 }
