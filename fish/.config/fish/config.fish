@@ -6,6 +6,7 @@ if test -d /opt/homebrew
 end
 
 fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+fish_add_path -gP "$HOMEBREW_PREFIX/opt/llvm/bin" "$HOMEBREW_PREFIX/sbin"
 
 ! set -q MANPATH; and set MANPATH ''
 set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
@@ -31,6 +32,7 @@ if command -q sccache
     set -gx CMAKE_CXX_COMPILER_LAUNCHER sccache
 end
 
-set -gx EDITOR vim
+set -gx EDITOR nvim
 
 zoxide init --cmd cd fish | source
+. spack/share/spack/setup-env.fish
