@@ -16,6 +16,7 @@ set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 
 if status is-interactive
     and not set -q TMUX
+    and command -q tmux
     tmux new-session -A -s home
 end
 
@@ -35,4 +36,4 @@ end
 set -gx EDITOR nvim
 
 zoxide init --cmd cd fish | source
-. spack/share/spack/setup-env.fish
+. ~/spack/share/spack/setup-env.fish
