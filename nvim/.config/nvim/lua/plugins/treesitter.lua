@@ -56,7 +56,7 @@ return {
 		require("nvim-treesitter.configs").setup(opts)
 
 		parser_config.llvm = {
-			filetype = "ll",
+			filetype = ".ll",
 		}
 	end,
 }
