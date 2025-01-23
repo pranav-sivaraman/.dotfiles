@@ -3,16 +3,16 @@ if test -d /opt/homebrew
     set -gx HOMEBREW_CELLAR "$HOMEBREW_PREFIX/Cellar"
     set -gx HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/homebrew"
     set -gx HOMEBREW_NO_AUTO_UPDATE 1
+
+    fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+    fish_add_path -gP "$HOMEBREW_PREFIX/opt/llvm/bin" "$HOMEBREW_PREFIX/sbin"
+
+    ! set -q MANPATH; and set MANPATH ''
+    set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
+
+    ! set -q INFOPATH; and set INFOPATH ''
+    set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 end
-
-fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
-fish_add_path -gP "$HOMEBREW_PREFIX/opt/llvm/bin" "$HOMEBREW_PREFIX/sbin"
-
-! set -q MANPATH; and set MANPATH ''
-set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
-
-! set -q INFOPATH; and set INFOPATH ''
-set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 
 if status is-interactive
     and not set -q TMUX
