@@ -14,5 +14,4 @@ return {
 		},
 		opts = {},
 	},
-	{ "tpope/vim-fugitive" },
 }
