@@ -14,12 +14,6 @@ if test -d /opt/homebrew
     set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 end
 
-if status is-interactive
-    and not set -q TMUX
-    and command -q tmux
-    tmux new-session -A -s home
-end
-
 set -gx CMAKE_EXPORT_COMPILE_COMMANDS ON
 set -gx CMAKE_GENERATOR Ninja
 
