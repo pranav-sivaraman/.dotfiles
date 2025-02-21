@@ -14,6 +14,14 @@ if test -d /opt/homebrew
     set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 end
 
+if test -d $HOME/spack
+    . $HOME/spack/spack/setup-env.fish
+end
+
+if test -d $HOME/ramble
+    . $HOME/ramble/share/ramble/setup-env.fish
+end
+
 set -gx CMAKE_EXPORT_COMPILE_COMMANDS ON
 set -gx CMAKE_GENERATOR Ninja
 
@@ -30,4 +38,3 @@ end
 set -gx EDITOR nvim
 
 zoxide init --cmd cd fish | source
-. ~/spack/share/spack/setup-env.fish
