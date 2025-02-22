@@ -15,7 +15,7 @@ if test -d /opt/homebrew
 end
 
 if test -d $HOME/spack
-    . $HOME/spack/spack/setup-env.fish
+    . $HOME/spack/share/spack/setup-env.fish
 end
 
 if test -d $HOME/ramble
