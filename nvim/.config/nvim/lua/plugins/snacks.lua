@@ -1,4 +1,0 @@
-return {
-  "snacks.nvim",
-  terminal = {},
-}
