@@ -18,3 +18,4 @@ vim.opt.pumblend = 10 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.list = true -- Show some invisible characters
 vim.opt.mouse = "a" -- Enable mouse mode
+vim.opt.signcolumn = "yes" -- Always show the signcolumn
