@@ -19,3 +19,6 @@ vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.list = true -- Show some invisible characters
 vim.opt.mouse = "a" -- Enable mouse mode
 vim.opt.signcolumn = "yes" -- Always show the signcolumn
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.splitkeep = "screen"

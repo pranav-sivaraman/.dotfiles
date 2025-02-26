@@ -1,5 +1,6 @@
 require("config.lazy")
 require("config.options")
+require("config.autocmds")
 
 -- LSP
 vim.lsp.enable("luals")
