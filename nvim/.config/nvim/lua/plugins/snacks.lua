@@ -14,6 +14,7 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	opts = {
+		image = { enabled = false },
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
 		explorer = { enabled = true },

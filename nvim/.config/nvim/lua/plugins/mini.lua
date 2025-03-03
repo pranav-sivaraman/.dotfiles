@@ -4,8 +4,9 @@ return {
 	config = function()
 		require("mini.ai").setup()
 		require("mini.operators").setup()
-		require("mini.surround").setup()
+		-- require("mini.surround").setup()
 		require("mini.pairs").setup()
 		require("mini.sessions").setup()
+		require("mini.diff").setup()
 	end,
 }

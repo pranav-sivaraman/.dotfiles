@@ -4,6 +4,9 @@ return {
 	version = "*",
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
+	opts_extend = {
+		"sources.default",
+	},
 	opts = {
 		keymap = { preset = "super-tab" },
 
@@ -13,6 +16,9 @@ return {
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
+			per_filetype = {
+				codecompanion = { "codecompanion" },
+			},
 		},
 	},
 	opts_extend = { "sources.default" },
