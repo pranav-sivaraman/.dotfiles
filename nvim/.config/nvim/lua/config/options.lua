@@ -22,6 +22,8 @@ vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "screen"
 vim.opt.laststatus = 3 -- Global statusline
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
 
 vim.diagnostic.config({
 	signs = {
