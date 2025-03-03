@@ -14,6 +14,10 @@ if test -d /opt/homebrew
     set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 end
 
+if test -d $HOME/.local
+    fish_add_path -gP "$HOME/.local/bin"
+end
+
 if test -d $HOME/spack
     . $HOME/spack/share/spack/setup-env.fish
 end
