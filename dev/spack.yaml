@@ -1,21 +1,22 @@
 spack:
   specs:
-    - neovim
-    - fish
-    - zoxide
-    - jujutsu
-    - ninja
-    - gmake
-    - cmake
-    - ripgrep
-    - sccache
-    - fzf
-    - fd
-    - eza
-    - stow
-    - libtree
-    - zstd
-  view: /opt/view
+  - neovim
+  - fish
+  - zoxide
+  - jujutsu
+  - ninja
+  - gmake
+  - cmake
+  - ripgrep
+  - sccache
+  - fzf
+  - fd
+  - eza
+  - stow
+  - libtree
+  - zstd
+  - npm
+  view: true
   concretizer:
     unify: true
     targets:
@@ -23,4 +24,4 @@ spack:
     duplicates:
       strategy: minimal
   mirrors:
-    develop-2025-03-16: https://binaries.spack.io/develop-2025-03-16
+    develop-2025-03-16-developer-tools-x86_64_v3-linux-gnu: https://binaries.spack.io/develop-2025-03-16/developer-tools-x86_64_v3-linux-gnu
