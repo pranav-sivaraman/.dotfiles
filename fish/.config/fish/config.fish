@@ -20,6 +20,11 @@ end
 
 if test -d $HOME/spack
     . $HOME/spack/share/spack/setup-env.fish
+
+    set -gx DEV_PREFIX "$SPACK_ROOT/var/spack/environments/dev/.spack-env/view"
+    if test -d $DEV_PREFIX
+      fish_add_path -gP "$DEV_PREFIX/bin"
+    end
 end
 
 if test -d $HOME/ramble
@@ -42,3 +47,8 @@ end
 set -gx EDITOR nvim
 
 zoxide init --cmd cd fish | source
+
+if test -d /usr/share/Modules/init
+    set -gx MODULES_PREFIX /usr/share/Modules/init
+    . "$MODULES_PREFIX/fish"
+end
