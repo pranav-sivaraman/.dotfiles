@@ -4,8 +4,8 @@ if test -d /opt/homebrew
     set -gx HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/homebrew"
     set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
-    fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
-    fish_add_path -gP "$HOMEBREW_PREFIX/opt/llvm/bin" "$HOMEBREW_PREFIX/sbin"
+    fish_add_path -gaP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+    fish_add_path -gaP "$HOMEBREW_PREFIX/opt/llvm/bin" "$HOMEBREW_PREFIX/sbin"
 
     ! set -q MANPATH; and set MANPATH ''
     set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
@@ -15,15 +15,15 @@ if test -d /opt/homebrew
 end
 
 if test -d $HOME/.local
-    fish_add_path -gP "$HOME/.local/bin"
+    fish_add_path -gaP "$HOME/.local/bin"
 end
 
 if test -d $HOME/spack
     . $HOME/spack/share/spack/setup-env.fish
 
-    set -gx DEV_PREFIX "$SPACK_ROOT/var/spack/environments/dev/.spack-env/view"
+    set -gx DEV_PREFIX "$HOME/.dotfiles/dev/.spack-env/view"
     if test -d $DEV_PREFIX
-      fish_add_path -gP "$DEV_PREFIX/bin"
+      fish_add_path -gaP "$DEV_PREFIX/bin"
     end
 end
 
