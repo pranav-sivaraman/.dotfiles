@@ -16,6 +16,7 @@ spack:
   - libtree
   - zstd
   - npm
+  - bat
   view: true
   concretizer:
     unify: true
