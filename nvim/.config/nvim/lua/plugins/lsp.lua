@@ -34,5 +34,7 @@ return {
 
 		lspconfig.neocmake.setup({})
 		lspconfig.lua_ls.setup({})
+
+		lspconfig.yamlls.setup({})
 	end,
 }
