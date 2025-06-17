@@ -1,25 +1,22 @@
 return {
 	"saghen/blink.cmp",
-
-	version = "*",
+	-- use a release tag to download pre-built binaries
+	version = "1.*",
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
-	opts_extend = {
-		"sources.default",
-	},
 	opts = {
-		keymap = { preset = "super-tab" },
-
+		--
+		keymap = { preset = "default" },
 		appearance = {
-			use_nvim_cmp_as_default = true,
+			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- Adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "mono",
 		},
+		completion = { documentation = { auto_show = false } },
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
-			per_filetype = {
-				codecompanion = { "codecompanion" },
-			},
 		},
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
 }
