@@ -24,33 +24,3 @@ vim.opt.splitkeep = "screen"
 vim.opt.laststatus = 3 -- Global statusline
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
-
-vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN] = "",
-			[vim.diagnostic.severity.INFO] = "",
-			[vim.diagnostic.severity.HINT] = "",
-		},
-		numhl = {
-			[vim.diagnostic.severity.WARN] = "WarningMsg",
-			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
-			[vim.diagnostic.severity.INFO] = "DiagnosticInfo",
-			[vim.diagnostic.severity.HINT] = "DiagnosticHint",
-		},
-	},
-	underline = false, -- Disable undercurl
-})
-
-vim.g.clipboard = {
-	name = "OSC 52",
-	copy = {
-		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-	},
-	paste = {
-		["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-		["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-	},
-}
