@@ -20,11 +20,6 @@ end
 
 if test -d $HOME/spack
     . $HOME/spack/share/spack/setup-env.fish
-
-    set -gx DEV_PREFIX "$HOME/.dotfiles/dev/.spack-env/view"
-    if test -d $DEV_PREFIX
-      fish_add_path -gaP "$DEV_PREFIX/bin"
-    end
 end
 
 if test -d $HOME/ramble
