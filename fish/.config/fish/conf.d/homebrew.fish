@@ -1,5 +1,5 @@
 if test -d /opt/homebrew
-    set -gx HOMEBREW_PREFIX "/opt/homebrew"
+    set -gx HOMEBREW_PREFIX /opt/homebrew
     set -gx HOMEBREW_CELLAR "$HOMEBREW_PREFIX/Cellar"
     set -gx HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/homebrew"
     set -gx HOMEBREW_NO_AUTO_UPDATE 1
