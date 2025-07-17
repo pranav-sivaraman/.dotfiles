@@ -17,7 +17,6 @@ return {
       "dockerfile",
       "doxygen",
       "fish",
-      "html",
       "json",
       "latex",
       "llvm",
@@ -29,11 +28,9 @@ return {
       "python",
       "regex",
       "rust",
-      "sql",
       "tmux",
       "toml",
       "yaml",
-      "html",
       "latex",
     },
     highlight = {
@@ -45,4 +42,9 @@ return {
     indent = { enable = true },
   },
   cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+  config = function (opts) 
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup(opts)
+  end
 }
