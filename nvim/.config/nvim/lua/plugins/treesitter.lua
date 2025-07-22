@@ -1,9 +1,13 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "main",
-  lazy = false,
+  branch = "master",
   build = ":TSUpdate",
+  event = { "BufEnter", "VeryLazy" },
+  cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
   opts = {
+    highlight = { enable = true },
+    indent = { enable = true },
+    sync_install = false,
     ensure_installed = {
       "asm",
       "bash",
@@ -13,38 +17,25 @@ return {
       "cpp",
       "csv",
       "cuda",
-      "diff",
       "dockerfile",
-      "doxygen",
-      "fish",
+      "fortran",
       "json",
+      "julia",
+      "just",
       "latex",
       "llvm",
       "lua",
-      "make",
-      "markdown",
       "mlir",
       "ninja",
       "python",
-      "regex",
       "rust",
+      "ssh_config",
       "tmux",
       "toml",
       "yaml",
-      "latex",
     },
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    },
-    incremental_selection = { enable = true },
-    textobjects = { enable = true },
-    indent = { enable = true },
   },
-  cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-  config = function (opts) 
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup(opts)
-  end
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }
