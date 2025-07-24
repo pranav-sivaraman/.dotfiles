@@ -11,6 +11,7 @@ return {
     ensure_installed = {
       "asm",
       "bash",
+      "beancount",
       "bibtex",
       "c",
       "cmake",
