@@ -3,3 +3,12 @@
 [user]
 name = "Pranav Sivaraman"
 email = "pranavsivaraman@gmail.com"
+
+[signing]
+behavior = "drop"
+backend = "ssh"
+key = "/Users/psivaram/.ssh/id_ed25519_sk_rk_signing.pub"
+
+[git]
+subprocess = true
+sign-on-push = true
