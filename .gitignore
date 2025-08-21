@@ -3,3 +3,4 @@
 tmux/.config/tmux/plugins
 dev/.spack-env
 dev/spack.lock
+id_*
