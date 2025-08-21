@@ -7,5 +7,5 @@ if test -d /opt/homebrew
     set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
     set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 
-    fish_add_path -gaP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/opt/llvm/bin"
+    fish_add_path -ga "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/opt/llvm/bin"
 end
