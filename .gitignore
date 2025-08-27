@@ -4,3 +4,4 @@ tmux/.config/tmux/plugins
 dev/.spack-env
 dev/spack.lock
 id_*
+known_hosts*
