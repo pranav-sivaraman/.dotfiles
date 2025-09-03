@@ -1,5 +1,8 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
+fsmonitor.backend = "watchman"
+fsmonitor.watchman.register-snapshot-trigger = true
+
 [user]
 name = "Pranav Sivaraman"
 email = "pranavsivaraman@gmail.com"
