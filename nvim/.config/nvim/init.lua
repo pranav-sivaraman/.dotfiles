@@ -7,8 +7,8 @@ vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("tinymist")
--- vim.lsp.enable("basedpyright")
 vim.lsp.enable("ruff")
+vim.lsp.enable("ty")
 vim.lsp.enable("yamlls")
 
 
