@@ -1,5 +1,11 @@
 return {
   "chomosuke/typst-preview.nvim",
-  version = '1.*',
-  opts = {},
+  ft = "typst",
+  version = "1.*",
+  opts = {
+    dependencies_bin = {
+      ["tinymist"] = vim.fn.exepath("tinymist"),
+      ["websocat"] = vim.fn.exepath("websocat"),
+    }
+  },
 }
