@@ -21,5 +21,8 @@ default-command = "status"
 diff-formatter = ["difft", "--color=always", "$left", "$right"]
 paginate = "never"
 
+[templates]
+commit_trailers = "format_signed_off_by_trailer(self)"
+
 [revsets]
 log = "(trunk()..@):: | (trunk()..@)-"
