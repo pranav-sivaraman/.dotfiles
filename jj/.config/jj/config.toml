@@ -10,7 +10,7 @@ email = "pranavsivaraman@gmail.com"
 [signing]
 behavior = "drop"
 backend = "ssh"
-key = "/Users/psivaram/.ssh/id_ed25519_sk_rk_signing.pub"
+key = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIFFUrmk5b/h/0BXe0ZvWPErKIy1GTCuFrWIXKYqJU8rnAAAAC3NzaDpzaWduaW5n ssh:signing"
 
 [git]
 subprocess = true
