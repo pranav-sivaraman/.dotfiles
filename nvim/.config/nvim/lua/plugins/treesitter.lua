@@ -30,6 +30,7 @@ return {
       "ninja",
       "python",
       "rust",
+      "nix",
       "ssh_config",
       "tmux",
       "toml",
