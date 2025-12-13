@@ -7,6 +7,14 @@ fsmonitor.watchman.register-snapshot-trigger = true
 name = "Pranav Sivaraman"
 email = "pranavsivaraman@gmail.com"
 
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
+
+[aliases]
+l = ["log", "-r", "(trunk()..@):: | (trunk()..@)-"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+
 [signing]
 behavior = "drop"
 backend = "ssh"
@@ -23,6 +31,3 @@ paginate = "never"
 
 [templates]
 commit_trailers = "format_signed_off_by_trailer(self)"
-
-[revsets]
-log = "(trunk()..@):: | (trunk()..@)-"
